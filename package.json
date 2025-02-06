@@ -1,0 +1,27 @@
+{
+  "name": "@alonedev/dsa",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/mjs/index.mjs",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    "import": "./dist/mjs/index.mjs",
+    "require": "./dist/cjs/index.cjs",
+    "umd": "./dist/umd/index.umd.js",
+    "types": "./dist/types/index.d.ts"
+  },
+  "scripts": {
+    "build": "rimraf dist && webpack --mode production"
+  },
+  "author": "Devanand",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  }
+}
