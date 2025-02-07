@@ -1,3 +1,4 @@
 import LinkedList from "./LinkedList";
+import DoublyLinkedList from "./DoublyLinkedList";
 
-export default LinkedList;
+export { LinkedList, DoublyLinkedList };

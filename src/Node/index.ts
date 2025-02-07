@@ -1,3 +1,4 @@
 import Node from "./Node";
+import DoublyNode from "./DoublyNode";
 
-export default Node;
+export { Node, DoublyNode };
