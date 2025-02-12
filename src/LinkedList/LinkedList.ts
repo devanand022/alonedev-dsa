@@ -5,11 +5,10 @@ export default class LinkedList<T> {
   size: number;
 
   constructor(head: Node<T> | null = null) {
-
     if (head !== null && !(head instanceof Node)) {
       head = new Node(head);
     }
-    
+
     this.head = head;
     this.size = head ? 1 : 0;
   }
