@@ -1,4 +1,4 @@
-import { Node } from "../Node";
+import { Node } from '../Node';
 
 export default class LinkedList<T> {
   head: Node<T> | null;
@@ -43,7 +43,7 @@ export default class LinkedList<T> {
 
   insertAt(value: T, index: number): void {
     if (index < 0 || index > this.size) {
-      throw new Error("Index out of bounds");
+      throw new Error('Index out of bounds');
     } else {
       let newNode = new Node(value);
 
@@ -112,9 +112,9 @@ export default class LinkedList<T> {
 
   printList(): void {
     let current = this.head;
-    let str = "";
+    let str = '';
     while (current) {
-      str += current.value + " ";
+      str += current.value + ' ';
       current = current.next;
     }
     console.log(str);

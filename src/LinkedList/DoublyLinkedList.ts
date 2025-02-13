@@ -1,4 +1,4 @@
-import { DoublyNode } from "../Node";
+import { DoublyNode } from '../Node';
 
 export default class DoublyLinkedList<T> {
   head: DoublyNode<T> | null;
@@ -117,9 +117,9 @@ export default class DoublyLinkedList<T> {
   display(): void {
     if (!this.isEmpty()) {
       let current: DoublyNode<T> | null = this.head;
-      let str = "";
+      let str = '';
       while (current !== null) {
-        str += current.value + " ";
+        str += current.value + ' ';
         current = current.next;
         console.log(current);
       }

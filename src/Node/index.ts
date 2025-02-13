@@ -1,3 +1,3 @@
-import {Node, DoublyNode }from "./Node";
+import { DoublyNode, Node } from './Node';
 
-export { Node, DoublyNode };
+export { DoublyNode, Node };

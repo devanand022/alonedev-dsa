@@ -1,28 +1,28 @@
 const path = require('path');
 
 const commonConfig = {
-  entry: "./src/index.ts",
+  entry: './src/index.ts',
   resolve: {
-    extensions: [".ts"],
+    extensions: ['.ts'],
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: "ts-loader",
-        exclude: "/node_modules/",
+        use: 'ts-loader',
+        exclude: '/node_modules/',
       },
-    ]
+    ],
   },
-  target: "node",
-}
+  target: 'node',
+};
 
 const esmConfig = Object.assign({}, commonConfig, {
   output: {
-    filename: "index.mjs",
-    path: path.resolve(__dirname, "dist/mjs"),
+    filename: 'index.mjs',
+    path: path.resolve(__dirname, 'dist/mjs'),
     library: {
-      type: "module",
+      type: 'module',
     },
   },
   experiments: {
@@ -32,21 +32,21 @@ const esmConfig = Object.assign({}, commonConfig, {
 
 const cjsConfig = Object.assign({}, commonConfig, {
   output: {
-    filename: "index.cjs",
-    path: path.resolve(__dirname, "dist/cjs"),
+    filename: 'index.cjs',
+    path: path.resolve(__dirname, 'dist/cjs'),
     library: {
-      type: "commonjs2",
+      type: 'commonjs2',
     },
   },
 });
 
-const umdConfig= Object.assign({}, commonConfig, {
+const umdConfig = Object.assign({}, commonConfig, {
   output: {
-    filename: "index.umd.js",
-    path: path.resolve(__dirname, "dist/umd"),
-    library: "@alonedev/dsa",
-    libraryTarget: "umd",
-    globalObject: "this",
+    filename: 'index.umd.js',
+    path: path.resolve(__dirname, 'dist/umd'),
+    library: '@alonedev/dsa',
+    libraryTarget: 'umd',
+    globalObject: 'this',
   },
 });
 
