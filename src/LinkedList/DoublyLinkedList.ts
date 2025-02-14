@@ -1,15 +1,11 @@
 import { DoublyNode } from '../Node';
 
 export default class DoublyLinkedList<T> {
-  head: DoublyNode<T> | null;
-  tail: DoublyNode<T> | null;
-  length: number;
+  public head: DoublyNode<T> | null;
+  public tail: DoublyNode<T> | null;
+  private length: number;
 
   constructor(head: DoublyNode<T> | null = null) {
-    if (head !== null && !(head instanceof DoublyNode)) {
-      head = new DoublyNode(head);
-    }
-
     this.head = head;
     this.tail = head;
     this.length = head ? 1 : 0;

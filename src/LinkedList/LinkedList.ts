@@ -1,14 +1,10 @@
 import { Node } from '../Node';
 
 export default class LinkedList<T> {
-  head: Node<T> | null;
-  size: number;
+  public head: Node<T> | null;
+  private size: number;
 
   constructor(head: Node<T> | null = null) {
-    if (head !== null && !(head instanceof Node)) {
-      head = new Node(head);
-    }
-
     this.head = head;
     this.size = head ? 1 : 0;
   }
