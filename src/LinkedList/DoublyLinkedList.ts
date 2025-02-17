@@ -37,9 +37,9 @@ export default class DoublyLinkedList<T> {
     this.length++;
   }
 
-  insertAt(value: T, index: number): void {
+  insertAt(value: T, index: number): void | string {
     if (index < 0 || index > this.length) {
-      return;
+      throw new Error('Index out of bounds');
     }
 
     if (index === 0) {
@@ -72,9 +72,9 @@ export default class DoublyLinkedList<T> {
     }
   }
 
-  remove(value: T): void {
+  remove(value: T): void | string {
     if (!this.head) {
-      return;
+      throw new Error('List is empty');
     }
 
     let current: DoublyNode<T> | null = this.head;
@@ -110,16 +110,20 @@ export default class DoublyLinkedList<T> {
     return false;
   }
 
-  display(): void {
+  sizeOfList(): number {
+    return this.length;
+  }
+
+  display(): string {
     if (!this.isEmpty()) {
       let current: DoublyNode<T> | null = this.head;
       let str = '';
       while (current !== null) {
         str += current.value + ' ';
         current = current.next;
-        console.log(current);
       }
-      console.log(str);
+      return str;
     }
+    return ''
   }
 }

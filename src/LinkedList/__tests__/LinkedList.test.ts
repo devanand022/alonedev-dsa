@@ -1,5 +1,5 @@
-import { LinkedList } from '..';
-import { Node } from '../../Node'
+import { CircularLinkedList, DoublyLinkedList, LinkedList } from '..';
+import { DoublyNode, Node } from '../../Node'
 
 
 describe('LinkedList', () => {
@@ -50,5 +50,71 @@ describe('LinkedList', () => {
 })
 
 describe('DoublyLinkedList', () => {
-  test('should create a DoublyLinkedList', () => {})
+  test('should create a DoublyLinkedList', () => {
+    const test = new DoublyLinkedList<number>(new DoublyNode<number>(0))
+    expect(test).toBeDefined();
+  });
+
+  test('should add a new element to the DoublyLinkedList', () => {
+    const test = new DoublyLinkedList<number>();
+    expect(test.isEmpty()).toBe(true);
+    test.append(1);
+    expect(test.isEmpty()).toBe(false);
+    expect(test.sizeOfList()).toBe(1);
+    test.append(2);
+    expect(test.sizeOfList()).toBe(2);
+  });
+
+  test('should add an element at in head of the DoublyLinkedList', () => {
+    const test = new DoublyLinkedList<number>();
+    test.prepend(1);
+    expect(test.sizeOfList()).toBe(1);
+    test.prepend(2);
+    expect(test.sizeOfList()).toBe(2);
+  });
+
+  test('should insert an element at a specific index', () => {
+    const test = new DoublyLinkedList<number>();
+    expect(() => test.insertAt(2, 4)).toThrow('Index out of bounds');
+    test.insertAt(1, 0);
+    test.insertAt(2, 1);
+    test.append(3);
+    test.append(5);
+    test.insertAt(4, 2);
+  });
+
+  test('should remove an element from the DoublyLinkedList', () => {
+    const test = new DoublyLinkedList<number>();
+    expect(() => test.remove(5)).toThrow('List is empty');
+    test.append(1);
+    test.append(2);
+    test.append(3);
+    test.remove(2);
+    expect(test.sizeOfList()).toBe(2);
+  });
+})
+
+describe('CircularLinkedList', () => {
+  test('should create a CircularLinkedList', () => {
+    const test = new CircularLinkedList<number>(new Node<number>(0));
+    expect(test).toBeDefined();
+  });
+
+  test('should add a new element to the CircularLinkedList', () => {
+    const test = new CircularLinkedList<number>();
+    test.append(1);
+    expect(test.sizeOfList()).toBe(1);
+    test.append(2);
+    expect(test.sizeOfList()).toBe(2);
+    test.append(3);
+  });
+
+  test('should add an element at the head of the CircularLinkedList', () => {
+    const test = new CircularLinkedList<number>();
+    test.prepend(1);
+    expect(test.sizeOfList()).toBe(1);
+    test.prepend(2);
+    expect(test.sizeOfList()).toBe(2);
+    test.prepend(3);
+  });
 })

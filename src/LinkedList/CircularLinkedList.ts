@@ -5,9 +5,6 @@ export default class CircularLinkedList<T> {
   size: number = 0;
 
   constructor(head: Node<T> | null = null) {
-    if (head !== null && !(head instanceof Node)) {
-      head = new Node(head);
-    }
     this.head = head;
     this.size = head ? 1 : 0;
   }
@@ -20,7 +17,7 @@ export default class CircularLinkedList<T> {
       this.head.next = this.head;
     } else {
       let current = this.head;
-      while (current.next !== null) {
+      while (current.next !== null && current.next !== this.head) {
         current = current.next;
       }
       current.next = newNode;
@@ -48,5 +45,11 @@ export default class CircularLinkedList<T> {
 
   remove(value: T): void {
     if (!this.head) return;
+  }
+
+  //Helper Function
+
+  sizeOfList(): number{
+    return this.size;
   }
 }
