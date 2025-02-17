@@ -1,15 +1,11 @@
 import { DoublyNode } from '../Node';
 
 export default class DoublyLinkedList<T> {
-  head: DoublyNode<T> | null;
-  tail: DoublyNode<T> | null;
-  length: number;
+  public head: DoublyNode<T> | null;
+  public tail: DoublyNode<T> | null;
+  private length: number;
 
   constructor(head: DoublyNode<T> | null = null) {
-    if (head !== null && !(head instanceof DoublyNode)) {
-      head = new DoublyNode(head);
-    }
-
     this.head = head;
     this.tail = head;
     this.length = head ? 1 : 0;
@@ -41,9 +37,9 @@ export default class DoublyLinkedList<T> {
     this.length++;
   }
 
-  insertAt(value: T, index: number): void {
+  insertAt(value: T, index: number): void | string {
     if (index < 0 || index > this.length) {
-      return;
+      throw new Error('Index out of bounds');
     }
 
     if (index === 0) {
@@ -76,9 +72,9 @@ export default class DoublyLinkedList<T> {
     }
   }
 
-  remove(value: T): void {
+  remove(value: T): void | string {
     if (!this.head) {
-      return;
+      throw new Error('List is empty');
     }
 
     let current: DoublyNode<T> | null = this.head;
@@ -114,16 +110,20 @@ export default class DoublyLinkedList<T> {
     return false;
   }
 
-  display(): void {
+  sizeOfList(): number {
+    return this.length;
+  }
+
+  display(): string {
     if (!this.isEmpty()) {
       let current: DoublyNode<T> | null = this.head;
       let str = '';
       while (current !== null) {
         str += current.value + ' ';
         current = current.next;
-        console.log(current);
       }
-      console.log(str);
+      return str;
     }
+    return ''
   }
 }
