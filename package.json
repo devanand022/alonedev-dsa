@@ -19,7 +19,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "author": "Devanand",
   "license": "ISC",
