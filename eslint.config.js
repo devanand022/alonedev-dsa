@@ -3,7 +3,13 @@ const tsparser = require('@typescript-eslint/parser');
 
 module.exports = [
   {
-    ignores: ['dist', 'node_modules', '**/*.test.ts', '**/__tests__'],
+    ignores: [
+      'dist',
+      'node_modules',
+      '**/*.test.ts',
+      '**/__tests__',
+      'coverage',
+    ],
   },
   {
     files: ['**/*.ts'],
@@ -20,7 +26,7 @@ module.exports = [
     },
     rules: {
       '@typescript-eslint/no-unused-vars': 'warn',
-      'sort-imports': ['error', { ignoreDeclarationSort: true }],
+      'sort-imports': ['warn', { ignoreDeclarationSort: true }],
     },
   },
 ];

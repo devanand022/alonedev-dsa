@@ -5,8 +5,8 @@ describe('Node', () => {
     let node = new Node(1);
     expect(node.value).toBe(1);
     expect(node.next).toBeNull();
-  })
-})
+  });
+});
 
 describe('DoublyNode', () => {
   test('should create a new doubly node', () => {
@@ -14,5 +14,5 @@ describe('DoublyNode', () => {
     expect(node.value).toBe(1);
     expect(node.next).toBeNull();
     expect(node.prev).toBeNull();
-  })
-})
+  });
+});

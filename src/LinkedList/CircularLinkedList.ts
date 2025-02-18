@@ -49,7 +49,7 @@ export default class CircularLinkedList<T> {
 
   //Helper Function
 
-  sizeOfList(): number{
+  sizeOfList(): number {
     return this.size;
   }
 }

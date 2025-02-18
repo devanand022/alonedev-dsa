@@ -14,4 +14,4 @@ describe('Module Exports', () => {
       expect(exportedModule).toHaveProperty(key);
     });
   });
-})
+});

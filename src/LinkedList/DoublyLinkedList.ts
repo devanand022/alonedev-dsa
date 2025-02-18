@@ -124,6 +124,6 @@ export default class DoublyLinkedList<T> {
       }
       return str;
     }
-    return ''
+    return '';
   }
 }
