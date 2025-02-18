@@ -8,4 +8,4 @@ const config = {
   collectCoverageFrom: ['**/*.ts'],
 };
 
-export default config;
+module.exports = config;
