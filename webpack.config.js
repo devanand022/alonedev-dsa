@@ -17,37 +17,46 @@ const commonConfig = {
   target: 'node',
 };
 
-const esmConfig = Object.assign({}, commonConfig, {
-  output: {
-    filename: 'index.mjs',
-    path: path.resolve(__dirname, 'dist/mjs'),
-    library: {
-      type: 'module',
+const esmConfig = {
+  ...commonConfig,
+  ...{
+    output: {
+      filename: 'index.mjs',
+      path: path.resolve(__dirname, 'dist/mjs'),
+      library: {
+        type: 'module',
+      },
+    },
+    experiments: {
+      outputModule: true,
     },
   },
-  experiments: {
-    outputModule: true,
-  },
-});
+};
 
-const cjsConfig = Object.assign({}, commonConfig, {
-  output: {
-    filename: 'index.cjs',
-    path: path.resolve(__dirname, 'dist/cjs'),
-    library: {
-      type: 'commonjs2',
+const cjsConfig = {
+  ...commonConfig,
+  ...{
+    output: {
+      filename: 'index.cjs',
+      path: path.resolve(__dirname, 'dist/cjs'),
+      library: {
+        type: 'commonjs2',
+      },
     },
   },
-});
+};
 
-const umdConfig = Object.assign({}, commonConfig, {
-  output: {
-    filename: 'index.umd.js',
-    path: path.resolve(__dirname, 'dist/umd'),
-    library: '@alonedev/dsa',
-    libraryTarget: 'umd',
-    globalObject: 'this',
+const umdConfig = {
+  ...commonConfig,
+  ...{
+    output: {
+      filename: 'index.umd.js',
+      path: path.resolve(__dirname, 'dist/umd'),
+      library: '@alonedev/dsa',
+      libraryTarget: 'umd',
+      globalObject: 'this',
+    },
   },
-});
+};
 
 module.exports = [esmConfig, cjsConfig, umdConfig];

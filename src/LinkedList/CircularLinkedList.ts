@@ -43,8 +43,33 @@ export default class CircularLinkedList<T> {
     this.size++;
   }
 
-  remove(value: T): void {
-    if (!this.head) return;
+  remove(value: T): void | number {
+    if (!this.head) return -1;
+
+    let current = this.head;
+    let prev: Node<T> | null = null;
+
+    do {
+      if (current.value === value) {
+        if (this.size === 1) {
+          this.head = null;
+        } else if (current === this.head) {
+          let tail: Node<T> = this.head;
+          while (tail.next && tail.next !== this.head) {
+            tail = tail.next;
+          }
+          this.head = this.head.next;
+          tail.next = this.head;
+        } else {
+          prev!.next = current.next;
+        }
+        this.size--;
+        return;
+      }
+      prev = current;
+      current = current.next!;
+    } while (current !== this.head);
+    return -1;
   }
 
   //Helper Function
