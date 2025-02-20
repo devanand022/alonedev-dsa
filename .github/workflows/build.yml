@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Sonar Scan
+        uses: sonarsource/sonarcloud-github-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: |
+            -X
+            -Dsonar.projectKey=devanand022_alonedev-dsa
+            -Dsonar.organization=devanand022-1
+            -Dsonar.sources=src
+            -Dsonar.tests=src
+            -Dsonar.test.inclusions=src/**/*.test.ts
+            -Dsonar.exclusions=**/node_modules/**,**/dist/**,coverage/**,**/*.config.js,__tests__/**
+            -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.qualitygate.wait=false
+
+      - name: Clear Github Action Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar-cache-${{ hashFiles('**/pom.xml') }}

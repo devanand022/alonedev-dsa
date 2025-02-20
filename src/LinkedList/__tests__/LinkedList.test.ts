@@ -116,4 +116,21 @@ describe('CircularLinkedList', () => {
     expect(test.sizeOfList()).toBe(2);
     test.prepend(3);
   });
+
+  test('should remove an element', () => {
+    const test = new CircularLinkedList<number>();
+    expect(test.remove(2)).toBe(-1);
+    test.append(1);
+    test.remove(1);
+    expect(test.sizeOfList()).toBe(0);
+    test.append(1);
+    test.append(2);
+    test.append(3);
+    test.remove(1);
+    expect(test.sizeOfList()).toBe(2);
+    test.append(4);
+    test.remove(4);
+    expect(test.sizeOfList()).toBe(2);
+    expect(test.remove(5)).toBe(-1);
+  });
 });
