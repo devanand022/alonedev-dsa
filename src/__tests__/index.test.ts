@@ -1,6 +1,6 @@
-import * as exportedModule from '.';
-import * as NodeModule from './Node';
-import * as LinkedListModule from './LinkedList';
+import * as exportedModule from '..';
+import * as NodeModule from '../Node';
+import * as LinkedListModule from '../LinkedList';
 
 describe('Module Exports', () => {
   it('should export Node', () => {
