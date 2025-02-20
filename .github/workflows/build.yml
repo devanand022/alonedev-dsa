@@ -49,13 +49,13 @@ jobs:
         run: npm run test
 
       - name: Sonar Scan
-        uses: sonarsource/sonarcloud-github-action@master
+        uses: sonarsource/sonarcloud-github-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: |
-            -x
+            -X
             -Dsonar.projectKey=devanand022_alonedev-dsa
             -Dsonar.organization=devanand022-1
             -Dsonar.sources=src
