@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
   rootDir: 'src',
   preset: 'ts-jest',
   testEnvironment: 'node',
@@ -7,5 +7,3 @@ const config = {
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
   collectCoverageFrom: ['**/*.ts'],
 };
-
-module.exports = config;
